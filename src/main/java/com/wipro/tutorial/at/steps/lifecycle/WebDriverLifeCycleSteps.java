@@ -20,7 +20,13 @@ public class WebDriverLifeCycleSteps {
 
     @BeforeStory
     public void beforeStory() throws Exception {
-        driverProvider.initialize();                         
+    	// Open browser:
+        driverProvider.initialize();
+
+        // Maximize browser window:
+        driverProvider.get().manage().window().maximize();
+        
+        // Initialize all Page Object classes:
         for (Object page : pageObjectPostProcessor.getPageObjects()) {
         	PageFactory.initElements(driverProvider.get(), page);
         }
