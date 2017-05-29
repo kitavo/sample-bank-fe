@@ -1,6 +1,6 @@
 package com.wipro.tutorial.at.configuration;
 
-import org.jbehave.web.selenium.FirefoxWebDriverProvider;
+import org.jbehave.web.selenium.PropertyWebDriverProvider;
 import org.jbehave.web.selenium.WebDriverProvider;
 import org.jbehave.web.selenium.WebDriverScreenshotOnFailure;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +23,13 @@ public class ProjectConfiguration {
 	
 	@Bean
 	public WebDriverProvider webDriverProvider() {		
-		WebDriverProvider webDriverProvider = new FirefoxWebDriverProvider();		
+		WebDriverProvider webDriverProvider = new PropertyWebDriverProvider();
+		
+		System.setProperty("browser", "chrome");
+		if (System.getProperty("webdriver.chrome.driver") == null ) {
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/chromedriver.exe");
+		}
+		
 		return webDriverProvider;
 	}
 		
