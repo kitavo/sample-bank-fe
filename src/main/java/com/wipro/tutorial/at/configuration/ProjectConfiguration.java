@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.web.client.RestTemplate;
 
 
 @Configuration
@@ -29,4 +30,9 @@ public class ProjectConfiguration {
 		return new WebDriverScreenshotOnFailure(webDriverProvider());
 	}
 	
+	@Bean
+	public RestTemplate getRestTemplate() {
+		RestTemplate restTemplate = new RestTemplate();		
+		return restTemplate;
+	}
 }
