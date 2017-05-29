@@ -8,7 +8,7 @@ import com.wipro.tutorial.at.configuration.pageobjects.PageObject;
 
 @PageObject
 public class LoginPage extends AbstractPage {
-
+	
 	private final String LOGIN_URL = "http://localhost:8080/samplebank/index";
 	
 	@FindBy(how = How.ID, using = "username")
@@ -27,13 +27,19 @@ public class LoginPage extends AbstractPage {
 	
 	public LoginPage username (String username) {
 		LOG.info("Username: " + username);
+		
+		usernameInput.clear();
 		usernameInput.sendKeys(username);
+		
 		return this;
 	}
 	
 	public LoginPage password (String password) {
 		LOG.info("Password: " + password);
+		
+		passwordInput.clear();
 		passwordInput.sendKeys(password);
+		
 		return this;
 	}
 	
