@@ -3,13 +3,15 @@ package com.wipro.tutorial.at.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.springframework.beans.factory.annotation.Value;
 
 import com.wipro.tutorial.at.configuration.pageobjects.PageObject;
 
 @PageObject
 public class LoginPage extends AbstractPage {
-	
-	private final String LOGIN_URL = "http://localhost:8080/samplebank/index";
+		
+	@Value("${app.url}")
+	private String SAMPLE_BANK_URL;
 	
 	@FindBy(how = How.ID, using = "username")
 	private WebElement usernameInput;
@@ -21,8 +23,8 @@ public class LoginPage extends AbstractPage {
 	private WebElement loginBtn;
 	
 	public void navigateTo() {
-		LOG.info("Navigating user to page: " + LOGIN_URL);
-		webDriverProvider.get().get(LOGIN_URL);
+		LOG.info("Navigating user to page: " + SAMPLE_BANK_URL);
+		webDriverProvider.get().get(SAMPLE_BANK_URL);
 	}
 	
 	public LoginPage username (String username) {

@@ -6,12 +6,14 @@ import org.jbehave.web.selenium.WebDriverScreenshotOnFailure;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.web.client.RestTemplate;
 
 
 @Configuration
 @ComponentScan({"com.wipro.tutorial"})
+@PropertySource("classpath:configs/env.properties")
 public class ProjectConfiguration {
 
 	@Bean
