@@ -1,22 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.wipro.ta</groupId>
-	<artifactId>sample-bank-fe</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+  <groupId>com.wipro.ta</groupId>
+  <artifactId>sample-bank-fe</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
-	<name>Sample-Bank Front End Test Project</name>
+  <name>Sample-Bank Front End Test Project</name>  
 
-	<properties>
-		<jbehave.version>4.1</jbehave.version>
+  <properties>
+		<jbehave.core.version>4.0.5</jbehave.core.version>
 		<jbehave.site.version>3.3</jbehave.site.version>
 		<junit.runner.version>1.2.0</junit.runner.version>
-		<spring.version>4.1.6.RELEASE</spring.version>
 		<log4j.version>1.2.17</log4j.version>
 		<maven.compiler.version>3.3</maven.compiler.version>
-		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.source>1.7</maven.compiler.source>		
 		<selenium.version>2.53.0</selenium.version>
 	</properties>
 
@@ -27,22 +26,17 @@
 			<artifactId>selenium-java</artifactId>
 			<version>${selenium.version}</version>
 		</dependency>
-
+		
 		<!-- JBehave -->
 		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-core</artifactId>
-			<version>${jbehave.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-spring</artifactId>
-			<version>${jbehave.version}</version>
-		</dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>jbehave-junit-runner</artifactId>
+			<version>${junit.runner.version}</version>
+		</dependency>	
 		<dependency>
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-core</artifactId>
-			<version>${jbehave.version}</version>
+			<version>${jbehave.core.version}</version>
 			<classifier>resources</classifier>
 			<type>zip</type>
 		</dependency>
@@ -53,35 +47,23 @@
 			<type>zip</type>
 		</dependency>
 		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-spring</artifactId>
+			<version>${jbehave.core.version}</version>		
+		</dependency>
+		<dependency>
 			<groupId>org.jbehave.web</groupId>
 			<artifactId>jbehave-web-selenium</artifactId>
-			<version>3.6-beta-2</version>
+			<version>3.6-beta-2</version>			
 		</dependency>
-
-		<!-- Log4j -->
+		
+		<!-- Log4j-->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
-
-		<!-- Spring Framework -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.5</version>
-		</dependency>
+		
 	</dependencies>
 	<build>
 		<plugins>
@@ -119,11 +101,11 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin>			
 			<plugin>
 				<groupId>org.jbehave</groupId>
 				<artifactId>jbehave-maven-plugin</artifactId>
-				<version>${jbehave.version}</version>
+				<version>${jbehave.core.version}</version>
 				<executions>
 					<execution>
 						<id>unpack-view-resources</id>
@@ -132,7 +114,7 @@
 							<viewDirectory>${jbehave.view.output.directory}</viewDirectory>
 						</configuration>
 						<goals>
-							<goal>unpack-view-resources</goal>
+						  <goal>unpack-view-resources</goal>
 						</goals>
 					</execution>
 					<execution>
@@ -155,7 +137,7 @@
 							</systemProperties>
 							<ignoreFailureInStories>true</ignoreFailureInStories>
 							<ignoreFailureInView>true</ignoreFailureInView>
-							<threads>${jbehave.execution.threads}</threads>
+							<threads>${jbehave.execution.threads}</threads>							
 						</configuration>
 						<goals>
 							<goal>run-stories-as-embeddables</goal>
